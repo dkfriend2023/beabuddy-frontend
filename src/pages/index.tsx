@@ -4,7 +4,7 @@ import NavBar from "../components/NavBar";
 
 function Page() {
   return (
-    <div className="h-screen bg-[#f6f6f6] relative px-[18px] pt-[32px]">
+    <div className="h-screen bg-[#f6f6f6] relative p-[18px]">
       <Header />
       <AreaCard />
       <NavBar />
