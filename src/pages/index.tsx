@@ -8,10 +8,11 @@ import Header from "../components/Header";
 import AreaCard from "../components/AreaCard";
 import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
+import StoreCard from "../components/StoreCard";
 
 function Page() {
   return (
-    <div className="h-screen bg-[#f6f6f6] relative p-[18px] overflow-hidden">
+    <div className="h-screen bg-[#f6f6f6] relative p-[18px] overflow-x-hidden overflow-y-scroll">
       <Header />
       <Link href="#">
         <div className="flex justify-center">
@@ -52,6 +53,12 @@ function Page() {
             <Image src={chevron_right} width={5} height={8.75} alt="icon" />
           </div>
         </Link>
+      </div>
+      <div className="flex flex-col items-center gap-[6px] mt-[16px]">
+        <StoreCard />
+        <StoreCard />
+        <StoreCard />
+        <StoreCard />
       </div>
       <NavBar />
     </div>
