@@ -3,8 +3,10 @@ import Image from "next/image";
 import { register } from "swiper/element/bundle";
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
 
 import "swiper/css";
+import "swiper/css/pagination";
 
 import carousel_indicator_dots from "/public/carousel-indicator-dots.svg";
 import chevron_right from "/public/chevron-right.svg";
@@ -27,8 +29,29 @@ function Page() {
             <SearchBar />
           </Link>
         </div>
-      <div className="mb-[36px]">
-        <Swiper space-between={50} slidesPerView={1} centeredSlides={true} loop={false} >
+      </Link>
+      <div className="mb-[36px] px-[18px] max-w-[350px] mx-auto">
+        <Swiper
+          slidesPerView={"auto"}
+          centeredSlides={true}
+          centeredSlidesBounds={true}
+          spaceBetween={30}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Pagination]}
+          autoplay={{
+            delay: 4000,
+            disableOnInteraction: false,
+          }}
+          loop={true}
+          //   autoplay={{     //자동슬라이드 (false-비활성화)
+          //     delay={2500}, // 시간 설정
+          //     disableOnInteraction={false}, // false-스와이프 후 자동 재생
+          //   }}
+
+          //   loop : false,   // 슬라이
+        >
           <SwiperSlide>
             <AdCard />
           </SwiperSlide>
@@ -39,7 +62,6 @@ function Page() {
             <AdCard />
           </SwiperSlide>
         </Swiper>
-        <Image src={carousel_indicator_dots} width={35} height={9} alt="icon" />
       </div>
       <div className="flex justify-between items-center px-[18px]">
         <div className="flex flex-col">
