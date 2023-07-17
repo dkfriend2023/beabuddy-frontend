@@ -5,7 +5,7 @@ import location from "/public/location.svg";
 
 function StoreCard() {
   return (
-    <div className="w-[340px] h-[88px] bg-[#ffffff] rounded-[10px] shadow-[0_1px_4px_0_rgba(34,34,34,0.06)] p-[12px] flex justify-between items-center">
+    <div className="w-full h-[88px] bg-[#ffffff] rounded-[10px] shadow-[0_1px_4px_0_rgba(34,34,34,0.06)] p-[12px] flex justify-between items-center">
       <Image src={samplestoreimg} width={64} height={64} alt="img" />
       <div className="flex flex-col gap-[6px] items-baseline">
         <div className="text-[#1f2937] text-[16px] font-semibold">크리스터치킨</div>

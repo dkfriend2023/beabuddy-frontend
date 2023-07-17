@@ -27,8 +27,8 @@ function Page() {
             <SearchBar />
           </Link>
         </div>
-      <div className="mb-[36px]">
-        <Swiper space-between={50} slidesPerView={1} centeredSlides={true} loop={false} >
+      <div className="mb-[36px] max-w-[350px] ml-auto mr-auto flex flex-col items-center">
+        <Swiper space-between={50} slidesPerView={"auto"} centeredSlides={true} loop={false} className="w-full mb-[20px]">
           <SwiperSlide>
             <AdCard />
           </SwiperSlide>
@@ -54,14 +54,14 @@ function Page() {
         </Link>
       </div>
       <div className="mt-[16px] mb-[36px] px-[18px]">
-        <Swiper spaceBetween={14} slidesPerView={2}>
-          <SwiperSlide>
+        <Swiper spaceBetween={20} slidesPerView={"auto"}>
+          <SwiperSlide className="max-w-[200px]">
             <AreaCard />
           </SwiperSlide>
-          <SwiperSlide>
+          <SwiperSlide className="max-w-[200px]">
             <AreaCard />
           </SwiperSlide>
-          <SwiperSlide>
+          <SwiperSlide className="max-w-[200px]">
             <AreaCard />
           </SwiperSlide>
         </Swiper>
