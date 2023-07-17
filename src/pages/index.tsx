@@ -24,9 +24,10 @@ function Page() {
   return (
     <div className="h-screen bg-[#f6f6f6] pt-[18px] overflow-x-hidden overflow-y-scroll">
       <Header />
-      <Link href="#">
-        <div className="flex justify-center">
-          <SearchBar />
+        <div className="flex justify-center mb-[28px]">
+          <Link href="#">
+            <SearchBar />
+          </Link>
         </div>
       </Link>
       <div className="mb-[36px] px-[18px] max-w-[350px] mx-auto">
