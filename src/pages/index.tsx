@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { register } from "swiper/element/bundle";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -13,6 +14,9 @@ import AreaCard from "../components/AreaCard";
 import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
 import StoreCard from "../components/StoreCard";
+import AdCard from "../components/AdCard";
+
+register();
 
 function Page() {
   return (
@@ -24,7 +28,7 @@ function Page() {
         </div>
       </Link>
       <div className="flex flex-col justify-center items-center mb-[36px]">
-        <div className="w-[280px] h-[120px] bg-[#ff9f06] rounded-[28px] shadow-[0_2px_8px_0_rgba(0,0,0,0.04)] mb-[18px]"></div>
+        <AdCard/>
         <Image src={carousel_indicator_dots} width={35} height={9} alt="icon" />
       </div>
       <div className="flex justify-between items-center px-[18px]">
@@ -72,7 +76,6 @@ function Page() {
         <StoreCard />
         <StoreCard />
       </div>
-      <NavBar />
     </div>
   );
 }
