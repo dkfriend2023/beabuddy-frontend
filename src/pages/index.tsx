@@ -75,14 +75,14 @@ function Page() {
         </Link>
       </div>
       <div className="mt-[16px] mb-[36px] px-[18px]">
-        <Swiper spaceBetween={14} slidesPerView={2}>
-          <SwiperSlide>
+        <Swiper spaceBetween={20} slidesPerView={"auto"}>
+          <SwiperSlide className="max-w-[200px]">
             <AreaCard />
           </SwiperSlide>
-          <SwiperSlide>
+          <SwiperSlide className="max-w-[200px]">
             <AreaCard />
           </SwiperSlide>
-          <SwiperSlide>
+          <SwiperSlide className="max-w-[200px]">
             <AreaCard />
           </SwiperSlide>
         </Swiper>
