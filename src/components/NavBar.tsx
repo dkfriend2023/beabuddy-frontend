@@ -5,7 +5,7 @@ import navhome from "/public/nav-icons/nav-home.svg";
 import navheart from "/public/nav-icons/nav-heart.svg";
 import navsearch from "/public/nav-icons/nav-search.svg";
 import navreserve from "/public/nav-icons/nav-reserve.svg";
-import navprofile from "/public/nav-icons/nav-search.svg";
+import navprofile from "/public/nav-icons/nav-profile.svg";
 
 function NavBar() {
   return (

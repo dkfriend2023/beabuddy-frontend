@@ -1,6 +1,10 @@
 import Link from "next/link";
 import Image from "next/image";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
+
 import carousel_indicator_dots from "/public/carousel-indicator-dots.svg";
 import chevron_right from "/public/chevron-right.svg";
 
@@ -35,10 +39,18 @@ function Page() {
           </div>
         </Link>
       </div>
-      <div className="flex gap-[14px] mt-[16px] mb-[36px] px-[18px]">
-        <AreaCard />
-        <AreaCard />
-        <AreaCard />
+      <div className="mt-[16px] mb-[36px] px-[18px]">
+        <Swiper spaceBetween={14} slidesPerView={2}>
+          <SwiperSlide>
+            <AreaCard />
+          </SwiperSlide>
+          <SwiperSlide>
+            <AreaCard />
+          </SwiperSlide>
+          <SwiperSlide>
+            <AreaCard />
+          </SwiperSlide>
+        </Swiper>
       </div>
       <div className="flex justify-between items-center px-[18px]">
         <div className="flex flex-col">
