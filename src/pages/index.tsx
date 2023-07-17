@@ -16,6 +16,7 @@ import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
 import StoreCard from "../components/StoreCard";
 import AdCard from "../components/AdCard";
+import { CSSProperties } from "react";
 
 register();
 
@@ -34,7 +35,12 @@ function Page() {
             slidesPerView={1}
             slidesPerGroup={1}
             centeredSlides={true}
+            slideToClickedSlide={true}
+            centeredSlidesBounds={true}
             spaceBetween={30}
+            style={{
+              "--swiper-pagination-color": "#fe8d00"
+            } as CSSProperties}
             pagination={{
               clickable: true,
             }}
@@ -44,7 +50,6 @@ function Page() {
               disableOnInteraction: false,
             }}
             loop={true}
-            resistance={false}
           >
             <SwiperSlide id="0">
               <AdCard />
