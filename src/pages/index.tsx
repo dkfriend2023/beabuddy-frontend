@@ -17,6 +17,7 @@ import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
 import StoreCard from "../components/StoreCard";
 import AdCard from "../components/AdCard";
+import { CSSProperties } from "react";
 
 register();
 
@@ -32,10 +33,15 @@ function Page() {
         </div>
         <div className="mb-[36px] px-[18px] max-w-[370px] sm:max-w-[300px] mx-auto">
           <Swiper
-            slidesPerView={"auto"}
+            slidesPerView={1}
+            slidesPerGroup={1}
             centeredSlides={true}
+            slideToClickedSlide={true}
             centeredSlidesBounds={true}
             spaceBetween={30}
+            style={{
+              "--swiper-pagination-color": "#fe8d00"
+            } as CSSProperties}
             pagination={{
               clickable: true,
             }}
@@ -45,12 +51,6 @@ function Page() {
               disableOnInteraction: false,
             }}
             loop={true}
-            //   autoplay={{     //자동슬라이드 (false-비활성화)
-            //     delay={2500}, // 시간 설정
-            //     disableOnInteraction={false}, // false-스와이프 후 자동 재생
-            //   }}
-
-            //   loop : false,   // 슬라이
           >
             <SwiperSlide>
               <AdCard />
