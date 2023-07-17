@@ -3,8 +3,10 @@ import Image from "next/image";
 import { register } from "swiper/element/bundle";
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
 
 import "swiper/css";
+import "swiper/css/pagination";
 
 import carousel_indicator_dots from "/public/carousel-indicator-dots.svg";
 import chevron_right from "/public/chevron-right.svg";
@@ -20,16 +22,45 @@ register();
 
 function Page() {
   return (
-    <div className="h-screen bg-[#f6f6f6] relative pt-[18px] overflow-x-hidden overflow-y-scroll">
+    <div className="h-screen bg-[#f6f6f6] pt-[18px] overflow-x-hidden overflow-y-scroll">
       <Header />
       <Link href="#">
         <div className="flex justify-center">
           <SearchBar />
         </div>
       </Link>
-      <div className="flex flex-col justify-center items-center mb-[36px]">
-        <AdCard/>
-        <Image src={carousel_indicator_dots} width={35} height={9} alt="icon" />
+      <div className="mb-[36px] px-[18px] max-w-[350px] mx-auto">
+        <Swiper
+          slidesPerView={"auto"}
+          centeredSlides={true}
+          centeredSlidesBounds={true}
+          spaceBetween={30}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Pagination]}
+          autoplay={{
+            delay: 4000,
+            disableOnInteraction: false,
+          }}
+          loop={true}
+          //   autoplay={{     //자동슬라이드 (false-비활성화)
+          //     delay={2500}, // 시간 설정
+          //     disableOnInteraction={false}, // false-스와이프 후 자동 재생
+          //   }}
+
+          //   loop : false,   // 슬라이
+        >
+          <SwiperSlide>
+            <AdCard />
+          </SwiperSlide>
+          <SwiperSlide>
+            <AdCard />
+          </SwiperSlide>
+          <SwiperSlide>
+            <AdCard />
+          </SwiperSlide>
+        </Swiper>
       </div>
       <div className="flex justify-between items-center px-[18px]">
         <div className="flex flex-col">
