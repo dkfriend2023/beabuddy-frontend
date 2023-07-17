@@ -63,7 +63,7 @@ function Page() {
             </SwiperSlide>
           </Swiper>
         </div>
-        <div className="sm:pl-[10px] pr-[10px]">
+        <div className="sm:pl-[10px] sm:pr-[10px]">
           <div className="flex justify-between items-center px-[18px]">
             <div className="flex flex-col">
               <div className="text-[#1f2937] text-[16px] sm:text-[15px] font-semibold">지역별 추천</div>
@@ -109,6 +109,7 @@ function Page() {
             <StoreCard />
             <StoreCard />
           </div>
+          <div className="h-[20px]"></div>
         </div>
       </div>
     </div>
