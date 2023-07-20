@@ -1,22 +1,23 @@
 import Link from "next/link";
 import Image from "next/image";
-import { register } from "swiper/element/bundle";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
+import { register } from "swiper/element/bundle";
+
+import { CSSProperties } from "react";
 
 import "swiper/css";
 import "swiper/css/pagination";
 
 import chevron_right from "/public/chevron-right.svg";
+import sidemenubars from "/public/side-menubars.svg";
 
 import Header from "../components/Header";
 import AreaCard from "../components/AreaCard";
-import NavBar from "../components/NavBar";
 import SearchBar from "../components/SearchBar";
 import StoreCard from "../components/StoreCard";
 import AdCard from "../components/AdCard";
-import { CSSProperties } from "react";
 
 register();
 
@@ -25,7 +26,8 @@ function Page() {
     <div className="h-screen bg-[#f6f6f6] pt-[18px] overflow-x-hidden overflow-y-scroll flex justify-center">
       <div className="max-w-[375px]">
         <Header />
-        <div className="flex justify-center mb-[28px]">
+        <div className="flex justify-around items-center px-[18px] mb-[28px]">
+          <Image src={sidemenubars} width={16} height={12} alt="icon" />
           <Link href="#">
             <SearchBar />
           </Link>
@@ -38,9 +40,11 @@ function Page() {
             slideToClickedSlide={true}
             centeredSlidesBounds={true}
             spaceBetween={30}
-            style={{
-              "--swiper-pagination-color": "#fe8d00"
-            } as CSSProperties}
+            style={
+              {
+                "--swiper-pagination-color": "#fe8d00",
+              } as CSSProperties
+            }
             pagination={{
               clickable: true,
             }}
@@ -95,10 +99,10 @@ function Page() {
           <div className="flex justify-between items-center px-[18px]">
             <div className="flex flex-col">
               <div className="text-[#1f2937] text-[16px] sm:text-[15px] font-semibold">
-                주변 장소 추천
+                큐레이터 추천
               </div>
               <div className="text-[#6b7280] text-[12px] sm:text-[11px] font-medium">
-                주변 실시간 인기있는 모임장소 추천!
+                대학생에게 인기있는 모임장소 추천! (광고+)
               </div>
             </div>
             <Link href="#">
