@@ -23,7 +23,7 @@ register();
 
 function Page() {
   return (
-    <div className="h-screen bg-[#f6f6f6] pt-[18px] overflow-x-hidden overflow-y-scroll flex justify-center">
+    <div className="h-screen bg-[#f6f6f6] overflow-x-hidden overflow-y-scroll flex justify-center">
       <div className="max-w-[375px]">
         <Header />
         <div className="flex justify-around items-center px-[18px] mb-[28px]">
