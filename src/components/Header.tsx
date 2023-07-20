@@ -1,12 +1,14 @@
 import Image from "next/image";
 
-import location from "/public/location.svg";
+import beerimg from "/public/header-icons/beerimg.png";
+import dkfriendlogo from "/public/header-icons/dkfriend-logo.svg";
 
 function Header() {
   return (
-    <div className="flex justify-center items-center gap-[3px] pt-[16px] pb-[16px]">
-      <Image src={location} width={16} height={16} alt="icon" />
-      <span className="text-[12px] text-[4b5563">연세로 35, 서대문구 (창천동)</span>
+    <div className="flex justify-between items-center mx-[31px] my-[19px]">
+      <Image src={beerimg} width={52} height={37} alt="img" />
+      <Image src={dkfriendlogo} width={114} height={41} alt="logo" />
+      <Image src={beerimg} width={52} height={37} alt="img" />
     </div>
   );
 }
