@@ -11,7 +11,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 import chevron_right from "/public/chevron-right.svg";
-import sidemenubars from "/public/side-menubars.svg";
 
 import Header from "../components/Header";
 import AreaCard from "../components/AreaCard";
@@ -26,8 +25,7 @@ function Page() {
     <div className="h-screen bg-[#f6f6f6] overflow-x-hidden overflow-y-scroll flex justify-center">
       <div className="max-w-[375px]">
         <Header />
-        <div className="flex justify-around items-center px-[18px] mb-[28px]">
-          <Image src={sidemenubars} width={16} height={12} alt="icon" />
+        <div className="flex justify-around items-center mx-[18px] mb-[28px]">
           <Link href="#">
             <SearchBar />
           </Link>
