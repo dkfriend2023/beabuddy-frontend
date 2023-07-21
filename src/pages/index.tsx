@@ -11,7 +11,6 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 import chevron_right from "/public/chevron-right.svg";
-import sidemenubars from "/public/side-menubars.svg";
 
 import Header from "../components/Header";
 import AreaCard from "../components/AreaCard";
@@ -23,11 +22,10 @@ register();
 
 function Page() {
   return (
-    <div className="h-screen bg-[#f6f6f6] overflow-x-hidden overflow-y-scroll flex justify-center">
+    <div className="h-screen bg-[#f6f6f6] overflow-x-hidden overflow-y-scroll">
       <div className="max-w-[375px]">
         <Header />
-        <div className="flex justify-around items-center px-[18px] mb-[28px]">
-          <Image src={sidemenubars} width={16} height={12} alt="icon" />
+        <div className="flex justify-around items-center mx-[18px] mb-[28px]">
           <Link href="#">
             <SearchBar />
           </Link>
@@ -79,7 +77,13 @@ function Page() {
             <Link href="#">
               <div className="flex justify-between items-center w-[44px]">
                 <div className="text-[#6b7280] text-[12px] sm:text-[11px] font-medium">더보기</div>
-                <Image src={chevron_right} width={5} height={8.75} alt="icon" />
+                <Image
+                  src={chevron_right}
+                  width={5}
+                  height={8.75}
+                  alt="icon"
+                  style={{ width: "auto", height: "auto" }}
+                />
               </div>
             </Link>
           </div>
@@ -108,7 +112,13 @@ function Page() {
             <Link href="#">
               <div className="flex justify-between items-center w-[44px]">
                 <div className="text-[#6b7280] text-[12px] sm:text-[11px] font-medium">더보기</div>
-                <Image src={chevron_right} width={5} height={8.75} alt="icon" />
+                <Image
+                  src={chevron_right}
+                  width={5}
+                  height={8.75}
+                  alt="icon"
+                  style={{ width: "auto", height: "auto" }}
+                />
               </div>
             </Link>
           </div>
