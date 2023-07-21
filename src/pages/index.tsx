@@ -77,7 +77,13 @@ function Page() {
             <Link href="#">
               <div className="flex justify-between items-center w-[44px]">
                 <div className="text-[#6b7280] text-[12px] sm:text-[11px] font-medium">더보기</div>
-                <Image src={chevron_right} width={5} height={8.75} alt="icon" />
+                <Image
+                  src={chevron_right}
+                  width={5}
+                  height={8.75}
+                  alt="icon"
+                  style={{ width: "auto", height: "auto" }}
+                />
               </div>
             </Link>
           </div>
@@ -106,7 +112,13 @@ function Page() {
             <Link href="#">
               <div className="flex justify-between items-center w-[44px]">
                 <div className="text-[#6b7280] text-[12px] sm:text-[11px] font-medium">더보기</div>
-                <Image src={chevron_right} width={5} height={8.75} alt="icon" />
+                <Image
+                  src={chevron_right}
+                  width={5}
+                  height={8.75}
+                  alt="icon"
+                  style={{ width: "auto", height: "auto" }}
+                />
               </div>
             </Link>
           </div>
