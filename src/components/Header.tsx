@@ -1,14 +1,13 @@
 import Image from "next/image";
 
-import beerimg from "/public/header-icons/beerimg.png";
-import dkfriendlogo from "/public/header-icons/dkfriend-logo.svg";
+import sidemenubars from "/public/side-menubars.svg";
+import dkfriendlogo from "/public/dkfriend-logo.svg";
 
 function Header() {
   return (
-    <div className="flex justify-between items-center mx-[31px] my-[19px]">
-      <Image src={beerimg} width={52} height={37} alt="img" />
+    <div className="mt-[26px] mb-[13px] mx-[20px] flex justify-start items-center gap-[94px]">
+      <Image src={sidemenubars} width={16} height={12} alt="icon" />
       <Image src={dkfriendlogo} width={114} height={41} alt="logo" />
-      <Image src={beerimg} width={52} height={37} alt="img" />
     </div>
   );
 }
