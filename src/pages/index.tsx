@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import { register } from "swiper/element/bundle";
 
-import { CSSProperties } from "react";
+import { CSSProperties, useState, useEffect } from "react";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -21,12 +21,34 @@ import AdCard from "../components/AdCard";
 register();
 
 function Page() {
+  const [data, setData] = useState([]);
+  const callAPI = async () => {
+    try {
+      const res = await fetch(`http://127.0.0.1:8000`, {
+        method: "GET",
+        headers: {
+          accept: "application/json",
+        },
+      });
+      const result = await res.json();
+      setData(result);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    callAPI();
+  }, []);
+
+  console.log(data);
+
   return (
     <div className="h-screen bg-[#f6f6f6] overflow-x-hidden overflow-y-scroll">
       <div className="max-w-[375px]">
         <Header />
         <div className="flex justify-around items-center mx-[18px] mb-[28px]">
-          <Link href="#">
+          <Link href="#" onClick={callAPI}>
             <SearchBar />
           </Link>
         </div>
