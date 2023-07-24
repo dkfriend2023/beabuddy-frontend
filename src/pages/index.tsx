@@ -44,8 +44,8 @@ function Page() {
   console.log(data);
 
   return (
-    <div className="h-screen bg-[#f6f6f6] overflow-x-hidden overflow-y-scroll">
-      <div className="max-w-[375px]">
+    <div className="h-screen bg-[#f6f6f6] overflow-x-hidden overflow-y-scroll flex justify-center">
+      <div className="w-[375px]">
         <Header />
         <div className="flex justify-around items-center mx-[18px] mb-[28px]">
           <Link href="#" onClick={callAPI}>
