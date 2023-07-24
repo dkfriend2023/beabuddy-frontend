@@ -21,7 +21,7 @@ import AdCard from "../components/AdCard";
 register();
 
 function Page() {
-  const [data, setData] = useState([]);
+  const [groups, setGroup] = useState([]);
   const callAPI = async () => {
     try {
       const res = await fetch(`http://127.0.0.1:8000`, {
@@ -31,7 +31,7 @@ function Page() {
         },
       });
       const result = await res.json();
-      setData(result);
+      setGroup(result.groups);
     } catch (err) {
       console.log(err);
     }
@@ -41,11 +41,11 @@ function Page() {
     callAPI();
   }, []);
 
-  console.log(data);
+  console.log(groups);
 
   return (
-    <div className="h-screen bg-[#f6f6f6] overflow-x-hidden overflow-y-scroll">
-      <div className="max-w-[375px]">
+    <div className="h-screen bg-[#f6f6f6] overflow-x-hidden overflow-y-scroll flex justify-center">
+      <div className="w-[375px]">
         <Header />
         <div className="flex justify-around items-center mx-[18px] mb-[28px]">
           <Link href="#" onClick={callAPI}>
@@ -111,15 +111,20 @@ function Page() {
           </div>
           <div className="mt-[16px] mb-[36px] px-[18px]">
             <Swiper spaceBetween={20} slidesPerView={"auto"}>
+              {groups.map((item, index) => (
+                <SwiperSlide key={index} className="max-w-[200px] sm:max-w-[160px]">
+                  <AreaCard 
+                    name={item.name}  
+                    image={item.image}
+                    description={item.description}
+                  />
+                </SwiperSlide>
+              ))}
+              {/* 
               <SwiperSlide className="max-w-[200px] sm:max-w-[160px]">
                 <AreaCard />
-              </SwiperSlide>
-              <SwiperSlide className="max-w-[200px] sm:max-w-[160px]">
-                <AreaCard />
-              </SwiperSlide>
-              <SwiperSlide className="max-w-[200px] sm:max-w-[160px]">
-                <AreaCard />
-              </SwiperSlide>
+              </SwiperSlide> 
+              */}
             </Swiper>
           </div>
           <div className="flex justify-between items-center px-[18px]">
