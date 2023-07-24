@@ -5,7 +5,7 @@ import dkfriendlogo from "/public/dkfriend-logo.svg";
 
 function Header() {
   return (
-    <div className="mt-[26px] mb-[13px] mx-[20px] flex justify-start items-center gap-[94px]">
+    <div className="mt-[26px] mb-[13px] mx-[20px] flex justify-between items-center">
       <Image
         src={sidemenubars}
         width={16}
@@ -21,6 +21,7 @@ function Header() {
         style={{ width: 114, height: 41 }}
         priority={true}
       />
+      <div className="w-[16px] h-[12px]"></div>
     </div>
   );
 }
