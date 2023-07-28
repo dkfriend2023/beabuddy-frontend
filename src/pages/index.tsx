@@ -44,7 +44,7 @@ function Page() {
   console.log(groups);
 
   return (
-    <div className="h-screen bg-[#f6f6f6] overflow-x-hidden overflow-y-scroll flex justify-center">
+    <div className="bg-[#f6f6f6] overflow-x-hidden overflow-y-scroll flex justify-center">
       <div className="w-[375px]">
         <Header />
         <div className="flex justify-around items-center mx-[18px] mb-[28px]">
@@ -113,11 +113,7 @@ function Page() {
             <Swiper spaceBetween={20} slidesPerView={"auto"}>
               {groups.map((item, index) => (
                 <SwiperSlide key={index} className="max-w-[200px] sm:max-w-[160px]">
-                  <AreaCard 
-                    name={item.name}  
-                    image={item.image}
-                    description={item.description}
-                  />
+                  <AreaCard name={item.name} image={item.image} description={item.description} />
                 </SwiperSlide>
               ))}
               {/* 

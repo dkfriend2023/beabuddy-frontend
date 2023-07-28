@@ -21,7 +21,7 @@ import MenuCard from "@/src/components/MenuCard";
 
 function StorePage() {
   return (
-    <div className="h-screen bg-[#f6f6f6] overflow-x-hidden overflow-y-scroll flex justify-center">
+    <div className="bg-[#f6f6f6] overflow-x-hidden overflow-y-scroll flex justify-center">
       <div className="w-[375px]">
         <div className="w-full h-[54px] bg-[#fe8d00] rounded-b-[16px] mb-[8px] flex justify-center pt-[24px] relative">
           <div className="absolute left-[12px]">
