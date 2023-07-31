@@ -3,7 +3,6 @@ import Link from "next/link";
 import Header from "@/src/components/Header";
 import SearchBar from "@/src/components/SearchBar";
 import StoreCard from "@/src/components/StoreCard";
-import SavedCard from "@/src/components/SavedCard";
 
 function SinchonPage() {
   return (
