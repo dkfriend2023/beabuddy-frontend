@@ -1,36 +1,34 @@
 import Image from "next/image";
 import Link from "next/link";
-import Router from "next/router";
 
-import { kakaoInit } from "../_app";
+import { KAKAO_REST_API_KEY } from "@/src/utils";
 
 import textlogo from "/public/logo/textlogo.svg";
 import kakaologo from "/public/kakaologo.svg";
 
 function WelcomePage() {
-  const kakaoLogin = async () => {
-    const kakao = kakaoInit();
-    kakao.Auth.authorize({
-      redirectUri: "http://localhost:3000/kakao",
-    });
-    // kakao.Auth.login({
-    //   success: () => {
-    //     kakao.API.request({
-    //       url: "/v2/user/me",
-    //       success: (res: any) => {
-    //         console.log(res);
-    //         Router.push("/kakao");
-    //       },
-    //       fail: (error: any) => {
-    //         console.log(error);
-    //       },
-    //     });
-    //   },
-    //   fail: (error: any) => {
-    //     console.log(error);
-    //   },
-    // });
-  };
+  const redirect_uri = "http://localhost:3000/kakao";
+  const kakaoURL = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${KAKAO_REST_API_KEY}&redirect_uri=${redirect_uri}`;
+  function kakaoLogin() {
+    window.location.href = kakaoURL;
+  }
+  // kakao.Auth.login({
+  //   success: () => {
+  //     kakao.API.request({
+  //       url: "/v2/user/me",
+  //       success: (res: any) => {
+  //         console.log(res);
+  //         Router.push("/kakao");
+  //       },
+  //       fail: (error: any) => {
+  //         console.log(error);
+  //       },
+  //     });
+  //   },
+  //   fail: (error: any) => {
+  //     console.log(error);
+  //   },
+  // });
 
   return (
     <div className="bg-[#fff] overflow-x-hidden overflow-y-scroll flex justify-center">
