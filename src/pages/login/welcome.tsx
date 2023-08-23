@@ -1,35 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
 
-import { KAKAO_REST_API_KEY } from "@/src/utils";
-
 import textlogo from "/public/logo/textlogo.svg";
 import kakaologo from "/public/kakaologo.svg";
 
 function WelcomePage() {
-  const redirect_uri = "http://localhost:3000/kakao";
-  const kakaoURL = `https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=${KAKAO_REST_API_KEY}&redirect_uri=${redirect_uri}`;
-  function kakaoLogin() {
-    window.location.href = kakaoURL;
-  }
-  // kakao.Auth.login({
-  //   success: () => {
-  //     kakao.API.request({
-  //       url: "/v2/user/me",
-  //       success: (res: any) => {
-  //         console.log(res);
-  //         Router.push("/kakao");
-  //       },
-  //       fail: (error: any) => {
-  //         console.log(error);
-  //       },
-  //     });
-  //   },
-  //   fail: (error: any) => {
-  //     console.log(error);
-  //   },
-  // });
-
   return (
     <div className="bg-[#fff] overflow-x-hidden overflow-y-scroll flex justify-center">
       <div className="w-[375px] p-[16px]">
@@ -46,13 +21,12 @@ function WelcomePage() {
           </div>
         </div>
         <div className="flex flex-col justify-start items-center gap-[8px]">
-          <button
-            className="bg-[#fee500] font-bold w-[256px] h-[49px] rounded-[12px] text-[#000000]/80 text-[14px] flex justify-center items-center gap-[10px]"
-            onClick={kakaoLogin}
-          >
-            <Image src={kakaologo} width={15} height={15} alt="logo" />
-            카카오로 시작하기
-          </button>
+          <Link href="http://127.0.0.1:8000/accounts/kakao/signin/">
+            <button className="bg-[#fee500] font-bold w-[256px] h-[49px] rounded-[12px] text-[#000000]/80 text-[14px] flex justify-center items-center gap-[10px]">
+              <Image src={kakaologo} width={15} height={15} alt="logo" />
+              카카오로 시작하기
+            </button>
+          </Link>
           <button className="block bg-[#fe8d00] font-bold w-[256px] h-[49px] rounded-[12px] text-[#FFF] text-[14px]">
             회원가입
           </button>
