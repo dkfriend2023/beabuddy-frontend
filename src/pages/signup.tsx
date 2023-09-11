@@ -49,8 +49,8 @@ function Signup() {
 
   return (
     <div className="bg-[#fff] overflow-x-hidden overflow-y-scroll flex justify-center">
-      <div className="w-[375px] h-screen flex flex-col items-baseline justify-end bg-[#9ca3af]">
-        <div className="w-[375px] h-[763px] bg-[#fff] rounded-t-[36px] flex flex-col items-center">
+      <div className="w-[375px] h-screen flex flex-col bg-[#9ca3af]">
+        <div className="w-[375px] h-[763px] bg-[#fff] rounded-t-[36px] flex flex-col items-center mt-[50px]">
           <div className="w-[100%] h-[60px] flex justify-center items-center">
             <div className="w-[48px] h-[6px] bg-[#d2d4d8] rounded-[10px]"></div>
           </div>
