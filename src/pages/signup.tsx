@@ -1,6 +1,52 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
+
+import useInput from "../hooks/useInput";
 
 function Signup() {
+  const [userEmail, setUserEmail] = useInput("");
+  const [userTel, setUserTel] = useInput("");
+  const [userPW, setUserPW] = useInput("");
+  const [checkUserPW, setCheckUserPW] = useInput("");
+  const [userUni, setUserUni] = useInput("");
+
+  const router = useRouter();
+
+  async function onSignup(event: React.ChangeEvent<HTMLInputElement>) {
+    event.preventDefault();
+
+    if (userPW === checkUserPW) {
+      if (userUni.includes("대학교")) {
+        try {
+          await fetch("http://127.0.0.1:8000/accounts/sign-up/", {
+            method: "POST",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: userEmail,
+              password: userPW,
+              uni: userUni,
+              phone_number: `${userTel.slice(0, 3)}-${userTel.slice(3, 7)}-${userTel.slice(7)}`,
+            }),
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              console.log(data.jwt_token);
+              router.push("/");
+            });
+        } catch (error) {
+          console.log(error);
+        }
+      } else {
+        alert("학교명 전체를 입력해 주세요. ('대학교' 포함)");
+      }
+    } else {
+      alert("비밀번호 확인이 일치하지 않습니다.");
+    }
+  }
+
   return (
     <div className="bg-[#fff] overflow-x-hidden overflow-y-scroll flex justify-center">
       <div className="w-[375px] h-screen flex flex-col items-baseline justify-end bg-[#9ca3af]">
@@ -17,18 +63,21 @@ function Signup() {
             </div>
           </div>
           <div className="w-[100%] p-[24px]">
-            <form action="#" method="POST" className="flex flex-col">
+            <form action="#" method="POST" className="flex flex-col" onSubmit={onSignup}>
               <label
-                htmlFor="username"
+                htmlFor="email"
                 className="text-[#374151] text-[14px] font-semibold mb-[5px] ml-[10px]"
               >
-                사용자 이름
+                사용자 이메일 입력
               </label>
               <input
-                type="text"
-                id="username"
+                type="email"
+                inputMode="email"
+                id="email"
                 required
-                placeholder="사용자 이름 입력"
+                placeholder="사용자 이메일 입력"
+                value={userEmail}
+                onChange={setUserEmail}
                 className="rounded-[12px] px-[12px] h-[48px] border border-[#bec5d1] text-[#000] placeholder:text-[#9ca3af] text-[12px] font-normal focus:outline-none focus:border focus:border-[#fe8d00] mb-[10px]"
               />
 
@@ -40,9 +89,14 @@ function Signup() {
               </label>
               <input
                 type="tel"
+                inputMode="tel"
                 id="phone-number"
+                minLength={11}
+                maxLength={11}
                 required
-                placeholder="ex) 010-****-****"
+                placeholder="ex) 01012345678 (숫자만 입력해 주세요.)"
+                value={userTel}
+                onChange={setUserTel}
                 className="rounded-[12px] px-[12px] h-[48px] border border-[#bec5d1] text-[#000] placeholder:text-[#9ca3af] text-[12px] font-normal focus:outline-none focus:border focus:border-[#fe8d00] mb-[10px]"
               />
 
@@ -54,9 +108,10 @@ function Signup() {
               </label>
               <input
                 type="text"
+                inputMode="numeric"
                 id="phone-number-auth"
                 required
-                placeholder="------"
+                placeholder="인증번호 입력"
                 className="rounded-[12px] px-[12px] h-[48px] border border-[#bec5d1] text-[#000] placeholder:text-[#9ca3af] text-[12px] font-normal focus:outline-none focus:border focus:border-[#fe8d00] mb-[10px]"
               />
 
@@ -70,7 +125,10 @@ function Signup() {
                 type="password"
                 id="password"
                 required
-                placeholder="몇 자 이상"
+                minLength={8}
+                placeholder="8자 이상"
+                value={userPW}
+                onChange={setUserPW}
                 className="rounded-[12px] px-[12px] h-[48px] border border-[#bec5d1] text-[#000] placeholder:text-[#9ca3af] text-[12px] font-normal focus:outline-none focus:border focus:border-[#fe8d00] mb-[10px]"
               />
 
@@ -85,6 +143,8 @@ function Signup() {
                 id="password-check"
                 required
                 placeholder="위에 입력한 비밀번호와 똑같이 입력해 주세요."
+                value={checkUserPW}
+                onChange={setCheckUserPW}
                 className="rounded-[12px] px-[12px] h-[48px] border border-[#bec5d1] text-[#000] placeholder:text-[#9ca3af] text-[12px] font-normal focus:outline-none focus:border focus:border-[#fe8d00] mb-[10px]"
               />
 
@@ -98,7 +158,9 @@ function Signup() {
                 type="text"
                 id="school"
                 required
-                placeholder="ex) 연세대학교"
+                placeholder="ex) 연세대학교 (학교명 전체를 입력해 주세요.)"
+                value={userUni}
+                onChange={setUserUni}
                 className="rounded-[12px] px-[12px] h-[48px] border border-[#bec5d1] text-[#000] placeholder:text-[#9ca3af] text-[12px] font-normal focus:outline-none focus:border focus:border-[#fe8d00] mb-[10px]"
               />
 
