@@ -12,7 +12,7 @@ function Signup() {
 
   const router = useRouter();
 
-  async function onSignup(event: React.ChangeEvent<HTMLInputElement>) {
+  async function onSignup(event: React.ChangeEvent<HTMLFormElement>) {
     event.preventDefault();
 
     if (userPW === checkUserPW) {
@@ -33,8 +33,12 @@ function Signup() {
           })
             .then((response) => response.json())
             .then((data) => {
-              console.log(data.jwt_token);
+              const accessToken = data.jwt_token.access_token;
+              if (accessToken) {
+                localStorage.setItem("access-token", accessToken);
+              }
               router.push("/");
+              //   console.log(accessToken);
             });
         } catch (error) {
           console.log(error);
