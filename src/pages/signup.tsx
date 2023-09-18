@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 
 import useInput from "../hooks/useInput";
+import { useState } from "react";
 
 function Signup() {
   const [userEmail, setUserEmail] = useInput("");
@@ -52,136 +53,217 @@ function Signup() {
   }
 
   return (
-    <div className="bg-[#fff] overflow-x-hidden overflow-y-scroll flex justify-center">
-      <div className="w-[375px] h-screen flex flex-col bg-[#9ca3af]">
-        <div className="w-[375px] h-[763px] bg-[#fff] rounded-t-[36px] flex flex-col items-center mt-[50px]">
+    <div className="w-[100%] p-[24px]">
+      <form action="#" method="POST" className="flex flex-col" onSubmit={onSignup}>
+        <label
+          htmlFor="email"
+          className="text-[#374151] text-[14px] font-semibold mb-[5px] ml-[10px]"
+        >
+          사용자 이메일 입력
+        </label>
+        <input
+          type="email"
+          inputMode="email"
+          id="email"
+          required
+          placeholder="사용자 이메일 입력"
+          value={userEmail}
+          onChange={setUserEmail}
+          className="rounded-[12px] px-[12px] h-[48px] border border-[#bec5d1] text-[#000] placeholder:text-[#9ca3af] text-[12px] font-normal focus:outline-none focus:border focus:border-[#fe8d00] mb-[10px]"
+        />
+
+        <label
+          htmlFor="phone-number"
+          className="text-[#374151] text-[14px] font-semibold mb-[5px] ml-[10px]"
+        >
+          전화번호
+        </label>
+        <input
+          type="tel"
+          inputMode="tel"
+          id="phone-number"
+          minLength={11}
+          maxLength={11}
+          required
+          placeholder="ex) 01012345678 (숫자만 입력해 주세요.)"
+          value={userTel}
+          onChange={setUserTel}
+          className="rounded-[12px] px-[12px] h-[48px] border border-[#bec5d1] text-[#000] placeholder:text-[#9ca3af] text-[12px] font-normal focus:outline-none focus:border focus:border-[#fe8d00] mb-[10px]"
+        />
+
+        <label
+          htmlFor="phone-number-auth"
+          className="text-[#374151] text-[14px] font-semibold mb-[5px] ml-[10px]"
+        >
+          전화번호 인증
+        </label>
+        <input
+          type="text"
+          inputMode="numeric"
+          id="phone-number-auth"
+          required
+          placeholder="인증번호 입력"
+          className="rounded-[12px] px-[12px] h-[48px] border border-[#bec5d1] text-[#000] placeholder:text-[#9ca3af] text-[12px] font-normal focus:outline-none focus:border focus:border-[#fe8d00] mb-[10px]"
+        />
+
+        <label
+          htmlFor="password"
+          className="text-[#374151] text-[14px] font-semibold mb-[5px] ml-[10px]"
+        >
+          비밀번호
+        </label>
+        <input
+          type="password"
+          id="password"
+          required
+          minLength={8}
+          placeholder="8자 이상"
+          value={userPW}
+          onChange={setUserPW}
+          className="rounded-[12px] px-[12px] h-[48px] border border-[#bec5d1] text-[#000] placeholder:text-[#9ca3af] text-[12px] font-normal focus:outline-none focus:border focus:border-[#fe8d00] mb-[10px]"
+        />
+
+        <label
+          htmlFor="password-check"
+          className="text-[#374151] text-[14px] font-semibold mb-[5px] ml-[10px]"
+        >
+          비밀번호 확인
+        </label>
+        <input
+          type="password"
+          id="password-check"
+          required
+          placeholder="위에 입력한 비밀번호와 똑같이 입력해 주세요."
+          value={checkUserPW}
+          onChange={setCheckUserPW}
+          className="rounded-[12px] px-[12px] h-[48px] border border-[#bec5d1] text-[#000] placeholder:text-[#9ca3af] text-[12px] font-normal focus:outline-none focus:border focus:border-[#fe8d00] mb-[10px]"
+        />
+
+        <label
+          htmlFor="school"
+          className="text-[#374151] text-[14px] font-semibold mb-[5px] ml-[10px]"
+        >
+          소속 대학교
+        </label>
+        <input
+          type="text"
+          id="school"
+          required
+          placeholder="ex) 연세대학교 (학교명 전체를 입력해 주세요.)"
+          value={userUni}
+          onChange={setUserUni}
+          className="rounded-[12px] px-[12px] h-[48px] border border-[#bec5d1] text-[#000] placeholder:text-[#9ca3af] text-[12px] font-normal focus:outline-none focus:border focus:border-[#fe8d00] mb-[10px]"
+        />
+
+        <div className="flex justify-center items-center mt-[27px]">
+          <button
+            type="submit"
+            className="bg-[#f4f4f4] w-[256px] h-[49px] flex justify-center items-center text-[#9ca3af] text-[14px] font-bold rounded-[12px]"
+          >
+            회원가입
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+function Login() {
+  const [userTel, setUserTel] = useInput("");
+  const [userPW, setUserPW] = useInput("");
+
+  return (
+    <div className="w-[100%] p-[24px]">
+      <form action="#" method="POST" className="flex flex-col">
+        <label
+          htmlFor="phone-number"
+          className="text-[#374151] text-[14px] font-semibold mb-[5px] ml-[10px]"
+        >
+          전화번호
+        </label>
+        <input
+          type="tel"
+          inputMode="tel"
+          id="phone-number"
+          minLength={11}
+          maxLength={11}
+          required
+          value={userTel}
+          onChange={setUserTel}
+          placeholder="ex) 01012345678 (숫자만 입력해 주세요.)"
+          className="rounded-[12px] px-[12px] h-[48px] border border-[#bec5d1] text-[#000] placeholder:text-[#9ca3af] text-[12px] font-normal focus:outline-none focus:border focus:border-[#fe8d00] mb-[10px]"
+        />
+
+        <label
+          htmlFor="email"
+          className="text-[#374151] text-[14px] font-semibold mb-[5px] ml-[10px]"
+        >
+          비밀번호
+        </label>
+        <input
+          type="password"
+          id="password"
+          required
+          value={userPW}
+          onChange={setUserPW}
+          placeholder="비밀번호 입력"
+          className="rounded-[12px] px-[12px] h-[48px] border border-[#bec5d1] text-[#000] placeholder:text-[#9ca3af] text-[12px] font-normal focus:outline-none focus:border focus:border-[#fe8d00] mb-[10px]"
+        />
+
+        <div className="flex justify-center items-center mt-[27px]">
+          <button
+            type="submit"
+            className="bg-[#fe8d00] w-[256px] h-[49px] flex justify-center items-center text-[#ffffff] text-[14px] font-bold rounded-[12px]"
+          >
+            로그인
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+}
+
+function SignupOrLogin() {
+  const [toggle, setToggle] = useState(true);
+
+  return (
+    <div className="bg-[#9ca3af] overflow-x-hidden overflow-y-scroll flex justify-center">
+      <div className="w-[375px] h-screen flex flex-col">
+        <div className="w-[375px] bg-[#fff] rounded-t-[36px] flex flex-col items-center">
           <div className="w-[100%] h-[60px] flex justify-center items-center">
             <div className="w-[48px] h-[6px] bg-[#d2d4d8] rounded-[10px]"></div>
           </div>
           <div className="w-[100%] h-[59px] flex justify-between items-center">
-            <div className="w-[50%] h-[100%] flex justify-center items-center text-[#fe8d00] text-[16px] font-semibold border-b-[2px] border-[#fe8d00]">
+            <div
+              className={`w-[50%] h-[100%] flex justify-center items-center text-[${
+                toggle ? "#fe8d00" : "#89909e"
+              }] text-[16px] font-semibold border-b-[2px] ${
+                toggle ? "border-[#fe8d00]" : "border-transparent"
+              }`}
+              onClick={() => {
+                setToggle(true);
+              }}
+            >
               회원가입
             </div>
-            <div className="w-[50%] h-[100%] flex justify-center items-center text-[#89909e] text-[16px] font-semibold border-b-[2px] border-transparent">
-              <Link href="/login">로그인</Link>
+            <div
+              className={`w-[50%] h-[100%] flex justify-center items-center text-[${
+                toggle ? "#89909e" : "#fe8d00"
+              }] text-[16px] font-semibold border-b-[2px] ${
+                toggle ? "border-transparent" : "border-[#fe8d00]"
+              }`}
+              onClick={() => {
+                setToggle(false);
+              }}
+            >
+              로그인
             </div>
           </div>
-          <div className="w-[100%] p-[24px]">
-            <form action="#" method="POST" className="flex flex-col" onSubmit={onSignup}>
-              <label
-                htmlFor="email"
-                className="text-[#374151] text-[14px] font-semibold mb-[5px] ml-[10px]"
-              >
-                사용자 이메일 입력
-              </label>
-              <input
-                type="email"
-                inputMode="email"
-                id="email"
-                required
-                placeholder="사용자 이메일 입력"
-                value={userEmail}
-                onChange={setUserEmail}
-                className="rounded-[12px] px-[12px] h-[48px] border border-[#bec5d1] text-[#000] placeholder:text-[#9ca3af] text-[12px] font-normal focus:outline-none focus:border focus:border-[#fe8d00] mb-[10px]"
-              />
-
-              <label
-                htmlFor="phone-number"
-                className="text-[#374151] text-[14px] font-semibold mb-[5px] ml-[10px]"
-              >
-                전화번호
-              </label>
-              <input
-                type="tel"
-                inputMode="tel"
-                id="phone-number"
-                minLength={11}
-                maxLength={11}
-                required
-                placeholder="ex) 01012345678 (숫자만 입력해 주세요.)"
-                value={userTel}
-                onChange={setUserTel}
-                className="rounded-[12px] px-[12px] h-[48px] border border-[#bec5d1] text-[#000] placeholder:text-[#9ca3af] text-[12px] font-normal focus:outline-none focus:border focus:border-[#fe8d00] mb-[10px]"
-              />
-
-              <label
-                htmlFor="phone-number-auth"
-                className="text-[#374151] text-[14px] font-semibold mb-[5px] ml-[10px]"
-              >
-                전화번호 인증
-              </label>
-              <input
-                type="text"
-                inputMode="numeric"
-                id="phone-number-auth"
-                required
-                placeholder="인증번호 입력"
-                className="rounded-[12px] px-[12px] h-[48px] border border-[#bec5d1] text-[#000] placeholder:text-[#9ca3af] text-[12px] font-normal focus:outline-none focus:border focus:border-[#fe8d00] mb-[10px]"
-              />
-
-              <label
-                htmlFor="password"
-                className="text-[#374151] text-[14px] font-semibold mb-[5px] ml-[10px]"
-              >
-                비밀번호
-              </label>
-              <input
-                type="password"
-                id="password"
-                required
-                minLength={8}
-                placeholder="8자 이상"
-                value={userPW}
-                onChange={setUserPW}
-                className="rounded-[12px] px-[12px] h-[48px] border border-[#bec5d1] text-[#000] placeholder:text-[#9ca3af] text-[12px] font-normal focus:outline-none focus:border focus:border-[#fe8d00] mb-[10px]"
-              />
-
-              <label
-                htmlFor="password-check"
-                className="text-[#374151] text-[14px] font-semibold mb-[5px] ml-[10px]"
-              >
-                비밀번호 확인
-              </label>
-              <input
-                type="password"
-                id="password-check"
-                required
-                placeholder="위에 입력한 비밀번호와 똑같이 입력해 주세요."
-                value={checkUserPW}
-                onChange={setCheckUserPW}
-                className="rounded-[12px] px-[12px] h-[48px] border border-[#bec5d1] text-[#000] placeholder:text-[#9ca3af] text-[12px] font-normal focus:outline-none focus:border focus:border-[#fe8d00] mb-[10px]"
-              />
-
-              <label
-                htmlFor="school"
-                className="text-[#374151] text-[14px] font-semibold mb-[5px] ml-[10px]"
-              >
-                소속 대학교
-              </label>
-              <input
-                type="text"
-                id="school"
-                required
-                placeholder="ex) 연세대학교 (학교명 전체를 입력해 주세요.)"
-                value={userUni}
-                onChange={setUserUni}
-                className="rounded-[12px] px-[12px] h-[48px] border border-[#bec5d1] text-[#000] placeholder:text-[#9ca3af] text-[12px] font-normal focus:outline-none focus:border focus:border-[#fe8d00] mb-[10px]"
-              />
-
-              <div className="flex justify-center items-center mt-[27px]">
-                <button
-                  type="submit"
-                  className="bg-[#f4f4f4] w-[256px] h-[49px] flex justify-center items-center text-[#9ca3af] text-[14px] font-bold rounded-[12px]"
-                >
-                  회원가입
-                </button>
-              </div>
-            </form>
-          </div>
+          {toggle ? <Signup /> : <Login />}
         </div>
       </div>
     </div>
   );
 }
 
-export default Signup;
+export default SignupOrLogin;
