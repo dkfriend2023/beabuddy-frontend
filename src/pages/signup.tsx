@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
 
 import useInput from "../hooks/useInput";
@@ -29,7 +28,10 @@ function Signup() {
               email: userEmail,
               password: userPW,
               uni: userUni,
-              phone_number: `${userTel.slice(0, 3)}-${userTel.slice(3, 7)}-${userTel.slice(7)}`,
+              phone_number: `${userTel.slice(0, 3)}-${userTel.slice(
+                3,
+                7
+              )}-${userTel.slice(7)}`,
             }),
           })
             .then((response) => response.json())
@@ -39,7 +41,6 @@ function Signup() {
                 localStorage.setItem("access-token", accessToken);
               }
               router.push("/");
-              //   console.log(accessToken);
             });
         } catch (error) {
           console.log(error);
@@ -54,7 +55,12 @@ function Signup() {
 
   return (
     <div className="w-[100%] p-[24px]">
-      <form action="#" method="POST" className="flex flex-col" onSubmit={onSignup}>
+      <form
+        action="#"
+        method="POST"
+        className="flex flex-col"
+        onSubmit={onSignup}
+      >
         <label
           htmlFor="email"
           className="text-[#374151] text-[14px] font-semibold mb-[5px] ml-[10px]"
