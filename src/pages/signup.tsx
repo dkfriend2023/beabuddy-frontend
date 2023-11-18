@@ -18,7 +18,7 @@ function Signup() {
     if (userPW === checkUserPW) {
       if (userUni.includes("대학교")) {
         try {
-          await fetch("http://127.0.0.1:8000/accounts/sign-up/", {
+          await fetch(`${process.env.NEXT_PUBLIC_DB_HOST}accounts/sign-up/`, {
             method: "POST",
             headers: {
               Accept: "application/json",
@@ -28,15 +28,13 @@ function Signup() {
               email: userEmail,
               password: userPW,
               uni: userUni,
-              phone_number: `${userTel.slice(0, 3)}-${userTel.slice(
-                3,
-                7
-              )}-${userTel.slice(7)}`,
+              phone_number: userTel,
             }),
           })
             .then((response) => response.json())
             .then((data) => {
               const accessToken = data.jwt_token.access_token;
+
               if (accessToken) {
                 localStorage.setItem("access-token", accessToken);
               }
