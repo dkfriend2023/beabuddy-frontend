@@ -16,35 +16,31 @@ function Signup() {
     event.preventDefault();
 
     if (userPW === checkUserPW) {
-      if (userUni.includes("대학교")) {
-        try {
-          await fetch(`${process.env.NEXT_PUBLIC_DB_HOST}accounts/sign-up/`, {
-            method: "POST",
-            headers: {
-              Accept: "application/json",
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              email: userEmail,
-              password: userPW,
-              uni: userUni,
-              phone_number: userTel,
-            }),
-          })
-            .then((response) => response.json())
-            .then((data) => {
-              const accessToken = data.jwt_token.access_token;
+      try {
+        await fetch(`${process.env.NEXT_PUBLIC_DB_HOST}accounts/sign-up/`, {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: userEmail,
+            password: userPW,
+            uni: userUni,
+            phone_number: userTel,
+          }),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            const accessToken = data.jwt_token.access_token;
 
-              if (accessToken) {
-                localStorage.setItem("access-token", accessToken);
-              }
-              router.push("/");
-            });
-        } catch (error) {
-          console.log(error);
-        }
-      } else {
-        alert("학교명 전체를 입력해 주세요. ('대학교' 포함)");
+            if (accessToken) {
+              localStorage.setItem("access-token", accessToken);
+            }
+            router.push("/");
+          });
+      } catch (error) {
+        console.log(error);
       }
     } else {
       alert("비밀번호 확인이 일치하지 않습니다.");
@@ -153,6 +149,7 @@ function Signup() {
           type="text"
           id="school"
           required
+          pattern="[ㄱ-힣]+대학교$"
           placeholder="ex) 연세대학교 (학교명 전체를 입력해 주세요.)"
           value={userUni}
           onChange={setUserUni}
