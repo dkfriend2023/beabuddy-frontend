@@ -37,6 +37,7 @@ function Signup() {
             if (accessToken) {
               localStorage.setItem("access-token", accessToken);
             }
+
             router.push("/");
           });
       } catch (error) {
@@ -173,6 +174,8 @@ function Login() {
   const [userTel, setUserTel] = useInput("");
   const [userPW, setUserPW] = useInput("");
 
+  const router = useRouter();
+
   async function onLogin(event: React.ChangeEvent<HTMLFormElement>) {
     event.preventDefault();
 
@@ -199,6 +202,8 @@ function Login() {
             if (accessToken) {
               localStorage.setItem("access-token", accessToken);
             }
+
+            router.push("/");
           }
         });
     } catch (error) {
