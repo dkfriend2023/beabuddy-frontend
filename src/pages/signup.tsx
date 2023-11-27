@@ -173,9 +173,47 @@ function Login() {
   const [userTel, setUserTel] = useInput("");
   const [userPW, setUserPW] = useInput("");
 
+  async function onLogin(event: React.ChangeEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    try {
+      await fetch(`${process.env.NEXT_PUBLIC_DB_HOST}accounts/sign-in/`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          phone_number: userTel,
+          password: userPW,
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          if (Object.keys(data).length === 1) {
+            alert(data.message);
+          } else {
+            const accessToken = data.jwt_token.access_token;
+
+            if (accessToken) {
+              localStorage.setItem("access-token", accessToken);
+            }
+          }
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div className="w-[100%] p-[24px]">
-      <form action="#" method="POST" className="flex flex-col">
+      <form
+        action="#"
+        method="POST"
+        onSubmit={onLogin}
+        className="flex flex-col"
+      >
         <label
           htmlFor="phone-number"
           className="text-[#374151] text-[14px] font-semibold mb-[5px] ml-[10px]"
