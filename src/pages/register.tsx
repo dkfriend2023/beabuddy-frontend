@@ -262,7 +262,7 @@ function Login() {
   );
 }
 
-function SignupOrLogin() {
+function Register() {
   const [toggle, setToggle] = useState(true);
 
   return (
@@ -302,4 +302,4 @@ function SignupOrLogin() {
   );
 }
 
-export default SignupOrLogin;
+export default Register;
