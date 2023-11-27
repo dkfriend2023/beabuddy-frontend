@@ -159,7 +159,7 @@ function Signup() {
         <div className="flex justify-center items-center mt-[27px]">
           <button
             type="submit"
-            className="bg-[#f4f4f4] w-[256px] h-[49px] flex justify-center items-center text-[#9ca3af] text-[14px] font-bold rounded-[12px]"
+            className="bg-[#fe8d00] w-[256px] h-[49px] flex justify-center items-center text-[#ffffff] text-[14px] font-bold rounded-[12px]"
           >
             회원가입
           </button>
