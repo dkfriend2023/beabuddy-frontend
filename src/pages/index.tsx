@@ -98,7 +98,9 @@ function Page() {
             </div>
             <Link href="#">
               <div className="flex justify-between items-center w-[44px]">
-                <div className="text-[#6b7280] text-[12px] sm:text-[11px] font-medium">더보기</div>
+                <div className="text-[#6b7280] text-[12px] sm:text-[11px] font-medium">
+                  더보기
+                </div>
                 <Image
                   src={chevron_right}
                   width={5}
@@ -112,8 +114,15 @@ function Page() {
           <div className="mt-[16px] mb-[36px] px-[18px]">
             <Swiper spaceBetween={20} slidesPerView={"auto"}>
               {groups.map((item, index) => (
-                <SwiperSlide key={index} className="max-w-[200px] sm:max-w-[160px]">
-                  <AreaCard name={item.name} image={item.image} description={item.description} />
+                <SwiperSlide
+                  key={index}
+                  className="max-w-[200px] sm:max-w-[160px]"
+                >
+                  <AreaCard
+                    name={item.name}
+                    image={item.image}
+                    description={item.description}
+                  />
                 </SwiperSlide>
               ))}
               {/* 
@@ -134,7 +143,9 @@ function Page() {
             </div>
             <Link href="#">
               <div className="flex justify-between items-center w-[44px]">
-                <div className="text-[#6b7280] text-[12px] sm:text-[11px] font-medium">더보기</div>
+                <div className="text-[#6b7280] text-[12px] sm:text-[11px] font-medium">
+                  더보기
+                </div>
                 <Image
                   src={chevron_right}
                   width={5}
@@ -146,10 +157,22 @@ function Page() {
             </Link>
           </div>
           <div className="flex flex-col items-center gap-[6px] mt-[16px] px-[18px] mb-[6px]">
-            <StoreCard />
-            <StoreCard />
-            <StoreCard />
-            <StoreCard />
+            <StoreCard
+              storeName={"크리스터 치킨"}
+              address={"서울 서대문구 연세로11길 30"}
+            />
+            <StoreCard
+              storeName={"달팽이"}
+              address={"서울 서대문구 연세로7안길 37"}
+            />
+            <StoreCard
+              storeName={"술익는 마을"}
+              address={"서울 서대문구 연세로7길 22"}
+            />
+            <StoreCard
+              storeName={"네오치킨"}
+              address={"서울 서대문구 연세로9길 30 1층"}
+            />
           </div>
           <div className="h-[20px]"></div>
         </div>
