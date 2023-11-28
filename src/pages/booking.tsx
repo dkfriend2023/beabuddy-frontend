@@ -34,7 +34,9 @@ function Booking() {
       <div className="w-[375px]">
         <div className="flex flex-row justify-between px-[24px] py-[15.5px]">
           <Image src={arrowleft} width={24} height={24} alt="icon" />
-          <div className="text-[#FE8D00] text-[16px] font-semibold">예약하기</div>
+          <div className="text-[#FE8D00] text-[16px] font-semibold">
+            예약하기
+          </div>
           <div className="w-[24px] h-[16px]"></div>
         </div>
         <div className="flex flex-row items-center justify-around">
@@ -42,7 +44,9 @@ function Booking() {
             <div className="text-[20px] font-semibold">설레임삼겹살</div>
             <div className="flex flex-row">
               <Image src={location} width={16} height={16} alt="icon" />
-              <div className="text-[12px] font-medium">연세로 몇길 55 무슨동 무슨위치</div>
+              <div className="text-[12px] font-medium">
+                연세로 몇길 55 무슨동 무슨위치
+              </div>
             </div>
           </div>
           <Image src={food} width={49} height={49} alt="img" />
@@ -86,7 +90,9 @@ function Booking() {
                 onClick={handleAmTime}
                 style={{
                   backgroundColor: amChecked ? "#ffffff" : "transparent",
-                  boxShadow: amChecked ? "0px 3px 1px 0px rgba(0,0,0,0.04)" : "none",
+                  boxShadow: amChecked
+                    ? "0px 3px 1px 0px rgba(0,0,0,0.04)"
+                    : "none",
                 }}
               >
                 AM
@@ -96,7 +102,9 @@ function Booking() {
                 onClick={handlePmTime}
                 style={{
                   backgroundColor: amChecked ? "transparent" : "#ffffff",
-                  boxShadow: amChecked ? "none" : "0px 3px 1px 0px rgba(0,0,0,0.04)",
+                  boxShadow: amChecked
+                    ? "none"
+                    : "0px 3px 1px 0px rgba(0,0,0,0.04)",
                 }}
               >
                 PM
@@ -123,24 +131,51 @@ function Booking() {
               <Image src={pencil} width={20} height={20} alt="icon" />
             </div>
             <div className="flex flex-row items-center pb-[3px]">
-              <Image src={call} width={16} height={16} className="mr-[5px]" alt="icon" />
+              <Image
+                src={call}
+                width={16}
+                height={16}
+                className="mr-[5px]"
+                alt="icon"
+              />
               <div className="text-[12px] font-medium">010-9942-7360</div>
             </div>
             <div className="flex flex-row items-center pb-[3px]">
-              <Image src={people} width={16} height={16} className="mr-[5px]" alt="icon" />
-              <input type="text" placeholder="단체 이름: " className="placeholder:text-[12px]" />
+              <Image
+                src={people}
+                width={16}
+                height={16}
+                className="mr-[5px]"
+                alt="icon"
+              />
+              <input
+                type="text"
+                placeholder="단체 이름: "
+                className="placeholder:text-[12px]"
+              />
             </div>
             <div className="flex flex-row pb-[3px]">
-              <Image src={document} width={16} height={16} className="mr-[5px]" alt="icon" />
-              <input type="textarea" placeholder="요청사항: " className="placeholder:text-[12px]" />
+              <Image
+                src={document}
+                width={16}
+                height={16}
+                className="mr-[5px]"
+                alt="icon"
+              />
+              <input
+                type="textarea"
+                placeholder="요청사항: "
+                className="placeholder:text-[12px]"
+              />
             </div>
           </div>
         </div>
         <div className="p-[15px]">
           <div className="text-[20px] font-semibold">유의사항 (재확인)</div>
           <div className="text-[10px] font-regular p-[7px] pb-[0px]">
-            음 노쇼하지말고 음 뭐시기 뭐시기뭐시기뭐시기뭐시기뭐시기뭐시기뭐시기이이 돈 안돌려줄거구
-            웅웅 돈 안돌려줄거구 웅웅돈 안돌려줄거구 웅웅돈 안돌려줄거
+            음 노쇼하지말고 음 뭐시기
+            뭐시기뭐시기뭐시기뭐시기뭐시기뭐시기뭐시기이이 돈 안돌려줄거구 웅웅
+            돈 안돌려줄거구 웅웅돈 안돌려줄거구 웅웅돈 안돌려줄거
             난지금배고프구졸리구덥구에어컨틀고싶은데전기세는아까운뭐그런상태라고할
           </div>
         </div>
@@ -157,7 +192,9 @@ function Booking() {
         </div>
         <div className="p-[16px]">
           <div
-            style={{ backgroundColor: isChecked ? "#FE8D00" : "rgba(60,67,60,0.3)" }}
+            style={{
+              backgroundColor: isChecked ? "#FE8D00" : "rgba(60,67,60,0.3)",
+            }}
             className="h-[64px] rounded-full text-[#fff] text-[16px] font-extrabold flex justify-center items-center"
           >
             예약하기
