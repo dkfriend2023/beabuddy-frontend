@@ -8,6 +8,7 @@ import {
   isSameMonth,
   isToday,
   parse,
+  set,
   startOfToday,
 } from "date-fns";
 
@@ -20,7 +21,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Example() {
+export default function Example(props) {
   let today = startOfToday();
   let [selectedDay, setSelectedDay] = useState(today);
   let [currentMonth, setCurrentMonth] = useState(format(today, "MMM-yyyy"));
@@ -40,6 +41,19 @@ export default function Example() {
     let firstDayNextMonth = add(firstDayCurrentMonth, { months: 1 });
     setCurrentMonth(format(firstDayNextMonth, "MMM-yyyy"));
   }
+
+  function formatDate(date) {
+    var year = date.getFullYear();
+    var month = (date.getMonth() + 1).toString().padStart(2, "0"); // 월은 0부터 시작하므로 +1 필요
+    var day = date.getDate().toString().padStart(2, "0");
+
+    return year + "-" + month + "-" + day;
+  }
+
+  const setCurrentDate = (day) => {
+    setSelectedDay(day);
+    props.getDate(formatDate(day));
+  };
 
   return (
     <div>
@@ -88,10 +102,15 @@ export default function Example() {
                 >
                   <button
                     type="button"
-                    onClick={() => setSelectedDay(day)}
+                    onClick={() => {
+                      setCurrentDate(day);
+                      // console.log(formatDate(selectedDay));
+                    }}
                     className={classNames(
                       isEqual(day, selectedDay) && "text-white",
-                      !isEqual(day, selectedDay) && isToday(day) && "text-orange-500",
+                      !isEqual(day, selectedDay) &&
+                        isToday(day) &&
+                        "text-orange-500",
                       !isEqual(day, selectedDay) &&
                         !isToday(day) &&
                         isSameMonth(day, firstDayCurrentMonth) &&
@@ -101,12 +120,17 @@ export default function Example() {
                         !isSameMonth(day, firstDayCurrentMonth) &&
                         "text-gray-400",
                       isEqual(day, selectedDay) && isToday(day) && "bg-red-500",
-                      isEqual(day, selectedDay) && !isToday(day) && "bg-[#FE8D00]",
-                      (isEqual(day, selectedDay) || isToday(day)) && "font-semibold",
+                      isEqual(day, selectedDay) &&
+                        !isToday(day) &&
+                        "bg-[#FE8D00]",
+                      (isEqual(day, selectedDay) || isToday(day)) &&
+                        "font-semibold",
                       "mx-auto flex h-8 w-8 items-center justify-center rounded-full"
                     )}
                   >
-                    <time dateTime={format(day, "yyyy-MM-dd")}>{format(day, "d")}</time>
+                    <time dateTime={format(day, "yyyy-MM-dd")}>
+                      {format(day, "d")}
+                    </time>
                   </button>
                 </div>
               ))}
