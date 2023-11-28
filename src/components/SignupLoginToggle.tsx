@@ -5,7 +5,7 @@ function SignupLoginToggle({ toggle }: { toggle: boolean }) {
 
   return (
     <div className="overflow-x-hidden overflow-y-scroll flex justify-center">
-      <div className="w-[375px] h-screen flex flex-col">
+      <div className="w-[375px] flex flex-col">
         <div className="w-[375px] bg-[#fff] rounded-t-[36px] flex flex-col items-center pt-[40px]">
           <div className="w-[100%] h-[59px] flex justify-between items-center">
             <div
