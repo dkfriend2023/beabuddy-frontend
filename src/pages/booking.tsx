@@ -18,11 +18,14 @@ function Booking() {
   const [currentDate, setCurrentDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
   const [isChecked, setIsChecked] = useState(false);
-  const [hours, setHours] = useState(1);
+  const [hours, setHours] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [peopleNum, setPeopleNum] = useState(1);
   const [meetingName, setMeetingName] = useState("");
   const [description, setDescription] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const router = useRouter();
+
   const handleCheckbox = () => {
     setIsChecked(!isChecked);
   };
@@ -36,13 +39,22 @@ function Booking() {
   const getDate = (date) => {
     setCurrentDate(date);
   };
-  const formatTime = () => {
-    const formattedHours = hours < 10 ? `0${hours}` : hours;
-    const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+  // const formatTime = () => {
+  //   const formattedHours = hours < 10 ? `0${hours}` : hours;
+  //   const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
 
-    const adjustedHours = amChecked ? formattedHours : hours + 12;
+  //   const adjustedHours = amChecked ? formattedHours : hours + 12;
 
-    return `${adjustedHours}:${formattedMinutes}:00`;
+  //   return `${adjustedHours}:${formattedMinutes}:00`;
+  // };
+  const formatPhoneNumber = (phoneNumber) => {
+    const numbersOnly = phoneNumber.replace(/\D/g, "");
+    const formattedNumber = numbersOnly.replace(
+      /(\d{3})(\d{4})(\d{4})/,
+      "$1-$2-$3"
+    );
+
+    return formattedNumber;
   };
   useEffect(() => {
     const fetchData = async () => {
@@ -64,49 +76,82 @@ function Booking() {
         }
       } catch (error) {
         console.error(error);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchData();
   }, []);
-  const router = useRouter();
-  // async function onBook(event: React.ChangeEvent<HTMLFormElement>) {
-  //   event.preventDefault();
+  const onSubmit = async () => {
+    if (
+      hours >= 0 &&
+      hours <= 11 &&
+      minutes >= 0 &&
+      minutes <= 59 &&
+      peopleNum >= 8 &&
+      meetingName &&
+      description &&
+      isChecked
+    ) {
+      const formattedHours = hours < 10 ? `0${hours}` : hours;
+      const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
 
-  //   if (userPW === checkUserPW) {
-  //     try {
-  //       await fetch(
-  //         `${process.env.NEXT_PUBLIC_DB_HOST}bookings/{restaurant_id}/`,
-  //         {
-  //           method: "POST",
-  //           headers: {
-  //             Accept: "application/json",
-  //             "Content-Type": "application/json",
-  //           },
-  //           body: JSON.stringify({
-  //             meeting_name: meetingName,
-  //             date: currentDate,
-  //             time: formatTime(),
-  //             people_num: peopleNum,
-  //             description: description,
-  //           }),
-  //         }
-  //       )
-  //         .then((response) => response.json())
-  //         .then((data) => {
-  //           const accessToken = data.jwt_token.access_token;
+      const adjustedHours = amChecked ? formattedHours : hours + 12;
 
-  //           if (accessToken) {
-  //             localStorage.setItem("access-token", accessToken);
-  //           }
-  //           router.push("/");
-  //         });
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   } else {
-  //     alert("비밀번호 확인이 일치하지 않습니다.");
-  //   }
-  // }
+      const bookTime = `${adjustedHours}:${formattedMinutes}:00`;
+
+      const reservationData = {
+        meeting_name: meetingName,
+        date: currentDate,
+        time: bookTime,
+        people_num: peopleNum,
+        description: description,
+      };
+
+      try {
+        const token = localStorage.getItem("access-token");
+        const response = await fetch(`http://43.201.13.231/bookings/1/`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(reservationData),
+        });
+
+        if (response.ok) {
+          console.log("Booked successfully");
+          router.push(
+            {
+              pathname: "/bookingComplete",
+              query: { reservationData: JSON.stringify(reservationData) },
+            },
+            "/bookingComplete"
+          );
+        } else {
+          console.error("Failed to book");
+          alert("로그인 후 이용해주세요.");
+        }
+      } catch (error) {
+        console.error("Error during booking: ", error);
+      }
+    } else {
+      console.log("Invalid reservation conditions");
+      console.log(
+        hours,
+        minutes,
+        peopleNum,
+        meetingName,
+        description,
+        isChecked
+      );
+      alert("입력 형식을 확인해주세요.");
+    }
+  };
+
+  if (isLoading) {
+    return;
+  }
 
   return (
     <div className="h-screen bg-[#f6f6f6] overflow-x-hidden overflow-y-scroll flex justify-center">
@@ -121,12 +166,12 @@ function Booking() {
         <div className="flex flex-row items-center justify-around">
           <div className="flex flex-col">
             <div className="text-[20px] font-semibold">
-              {/* {bookingData.restaurant.name} */}
+              {bookingData.restaurant.name}
             </div>
             <div className="flex flex-row">
               <Image src={location} width={16} height={16} alt="icon" />
               <div className="text-[12px] font-medium">
-                {/* {bookingData.restaurant.location} */}
+                {bookingData.restaurant.location}
               </div>
             </div>
           </div>
@@ -141,8 +186,8 @@ function Booking() {
             <div className="bg-[rgba(118,118,128,0.12)] w-[86px] h-[36px] rounded-[6px] flex flex-row items-center justify-center">
               <input
                 type="number"
-                min="1"
-                max="12"
+                min="0"
+                max="11"
                 step="1"
                 value={hours}
                 onChange={(e) => setHours(parseInt(e.target.value, 10))}
@@ -204,7 +249,9 @@ function Booking() {
           <div className="text-[20px] font-semibold mb-[10px]">예약자 정보</div>
           <div className="bg-[#ffffff] rounded-[10px] shadow-[0_2px_8px_0_rgba(18,25,38,0.1)] h-[143px] p-[10px] flex flex-col">
             <div className="flex flex-row items-center justify-between pb-[5px]">
-              <div className="text-[16px] font-semibold">박민성</div>
+              <div className="text-[16px] font-semibold">
+                {bookingData.user.user_nickname}
+              </div>
               <Image src={pencil} width={20} height={20} alt="icon" />
             </div>
             <div className="flex flex-row items-center pb-[3px]">
@@ -215,7 +262,9 @@ function Booking() {
                 className="mr-[5px]"
                 alt="icon"
               />
-              <div className="text-[12px] font-medium">010-9942-7360</div>
+              <div className="text-[12px] font-medium">
+                {formatPhoneNumber(bookingData.user.phone_number)}
+              </div>
             </div>
             <div className="flex flex-row items-center pb-[3px]">
               <Image
@@ -276,6 +325,7 @@ function Booking() {
             style={{
               backgroundColor: isChecked ? "#FE8D00" : "rgba(60,67,60,0.3)",
             }}
+            onClick={onSubmit}
             className="h-[64px] rounded-full text-[#fff] text-[16px] font-extrabold flex justify-center items-center"
           >
             예약하기
