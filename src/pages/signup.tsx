@@ -33,6 +33,7 @@ function Signup() {
         })
           .then((response) => response.json())
           .then((data) => {
+            console.log(data);
             const accessToken = data.jwt_token.access_token;
 
             if (accessToken) {
