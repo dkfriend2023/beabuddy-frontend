@@ -16,8 +16,8 @@ function WelcomePage() {
             환영합니다!
           </div>
           <div className="text-[#4B5563] text-[11px] font-normal text-center w-[300px] leading-5 pb-[50px]">
-            전화 통화 없이 식당 정보 확인, 예약, 포인트 적립까지 할 수 있는 대학생 타겟 모바일 식당
-            단체예약 플랫폼, <strong>비어버디</strong>
+            전화 통화 없이 식당 정보 확인, 예약, 포인트 적립까지 할 수 있는
+            대학생 타겟 모바일 식당 단체예약 플랫폼, <strong>비어버디</strong>
           </div>
         </div>
         <div className="flex flex-col justify-start items-center gap-[8px]">
@@ -27,12 +27,16 @@ function WelcomePage() {
               카카오로 시작하기
             </button>
           </Link>
-          <button className="block bg-[#fe8d00] font-bold w-[256px] h-[49px] rounded-[12px] text-[#FFF] text-[14px]">
-            회원가입
-          </button>
-          <button className="block bg-[#fabf78] font-bold w-[256px] h-[49px] rounded-[12px] text-[#E06738] text-[14px]">
-            로그인
-          </button>
+          <Link href="/signup">
+            <button className="block bg-[#fe8d00] font-bold w-[256px] h-[49px] rounded-[12px] text-[#FFF] text-[14px]">
+              회원가입
+            </button>
+          </Link>
+          <Link href="/login">
+            <button className="block bg-[#fabf78] font-bold w-[256px] h-[49px] rounded-[12px] text-[#E06738] text-[14px]">
+              로그인
+            </button>
+          </Link>
         </div>
         <div className="mt-[34px] font-normal text-[#242423] text-[10px] flex justify-center items-start">
           회원가입 및 로그인 시&nbsp;
