@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import samplestoreimg from "/public/samplestoreimg.svg";
 import location from "/public/location.svg";
@@ -25,9 +26,11 @@ const StoreCard = ({ storeName, address }) => {
         </div>
       </div>
       <div className="h-full flex items-end">
-        <div className="w-[88px] h-[28px] sm:w-[60px] rounded-[8px] bg-[#fe8d00] text-[#fff] text-[12px] font-semibold flex justify-center items-center">
-          예약
-        </div>
+        <Link href="/booking">
+          <div className="w-[88px] h-[28px] sm:w-[60px] rounded-[8px] bg-[#fe8d00] text-[#fff] text-[12px] font-semibold flex justify-center items-center">
+            예약
+          </div>
+        </Link>
       </div>
     </div>
   );
