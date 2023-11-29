@@ -1,5 +1,7 @@
 import { useRouter } from "next/router";
 
+import { useState } from "react";
+
 import useInput from "../hooks/useInput";
 
 import SignupLoginToggle from "../components/SignupLoginToggle";
@@ -7,16 +9,20 @@ import SignupLoginToggle from "../components/SignupLoginToggle";
 function Signup() {
   const [userEmail, setUserEmail] = useInput("");
   const [userTel, setUserTel] = useInput("");
+  const [userVerificationNum, setUserVerificationNum] = useInput("");
   const [userPW, setUserPW] = useInput("");
   const [checkUserPW, setCheckUserPW] = useInput("");
   const [userUni, setUserUni] = useInput("");
+
+  const [verificationNum, setVerificationNum] = useState(0);
+  const [verified, setVerified] = useState(false);
 
   const router = useRouter();
 
   async function onSignup(event: React.ChangeEvent<HTMLFormElement>) {
     event.preventDefault();
 
-    if (userPW === checkUserPW) {
+    if (userPW === checkUserPW && verified === true) {
       try {
         await fetch(`${process.env.NEXT_PUBLIC_DB_HOST}accounts/sign-up/`, {
           method: "POST",
@@ -50,6 +56,35 @@ function Signup() {
     }
   }
 
+  async function getVerification() {
+    try {
+      await fetch(`${process.env.NEXT_PUBLIC_DB_HOST}accounts/sms/`, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          phone_number: String(userTel),
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          const num = data.auth_num;
+
+          setVerificationNum(num);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  function verifyProcess() {
+    if (verificationNum === Number(userVerificationNum)) {
+      setVerified(true);
+    }
+  }
+
   return (
     <>
       <SignupLoginToggle toggle={true} />
@@ -57,7 +92,7 @@ function Signup() {
         <form
           action="#"
           method="POST"
-          className="flex flex-col"
+          className="flex flex-col w-[100%]"
           onSubmit={onSignup}
         >
           <label
@@ -83,18 +118,27 @@ function Signup() {
           >
             전화번호
           </label>
-          <input
-            type="tel"
-            inputMode="tel"
-            id="phone-number"
-            minLength={11}
-            maxLength={11}
-            required
-            placeholder="ex) 01012345678 (숫자만 입력해 주세요.)"
-            value={userTel}
-            onChange={setUserTel}
-            className="rounded-[12px] px-[12px] h-[48px] border border-[#bec5d1] text-[#000] placeholder:text-[#9ca3af] text-[12px] font-normal focus:outline-none focus:border focus:border-[#fe8d00] mb-[10px]"
-          />
+          <div className="flex justify-between item-center">
+            <input
+              type="tel"
+              inputMode="tel"
+              id="phone-number"
+              minLength={11}
+              maxLength={11}
+              required
+              placeholder="ex) 01012345678 (숫자만 입력해 주세요.)"
+              value={userTel}
+              onChange={setUserTel}
+              className="rounded-[12px] px-[12px] h-[48px] w-[70%] border border-[#bec5d1] text-[#000] placeholder:text-[#9ca3af] text-[12px] font-normal focus:outline-none focus:border focus:border-[#fe8d00] mb-[10px]"
+            />
+            <button
+              type="button"
+              className="rounded-[10px] w-[27%] h-[46px] bg-[#fe8d00] text-[#ffffff] text-[12px] font-bold"
+              onClick={getVerification}
+            >
+              인증번호 받기
+            </button>
+          </div>
 
           <label
             htmlFor="phone-number-auth"
@@ -102,14 +146,31 @@ function Signup() {
           >
             전화번호 인증
           </label>
-          <input
-            type="text"
-            inputMode="numeric"
-            id="phone-number-auth"
-            required
-            placeholder="인증번호 입력"
-            className="rounded-[12px] px-[12px] h-[48px] border border-[#bec5d1] text-[#000] placeholder:text-[#9ca3af] text-[12px] font-normal focus:outline-none focus:border focus:border-[#fe8d00] mb-[10px]"
-          />
+          <div className="flex justify-between item-center">
+            <input
+              type="text"
+              inputMode="numeric"
+              id="phone-number-auth"
+              required
+              placeholder="인증번호 입력"
+              value={userVerificationNum}
+              onChange={setUserVerificationNum}
+              className="rounded-[12px] px-[12px] h-[48px] w-[70%] border border-[#bec5d1] text-[#000] placeholder:text-[#9ca3af] text-[12px] font-normal focus:outline-none focus:border focus:border-[#fe8d00] mb-[10px]"
+            />
+            <button
+              type="button"
+              className="rounded-[10px] w-[27%] h-[46px] bg-[#fe8d00] text-[#ffffff] text-[12px] font-bold"
+              onClick={verifyProcess}
+            >
+              인증하기
+            </button>
+          </div>
+
+          <p className="text-[#9098a5] text-[12px] font-semibold ml-[10px] mb-[5px]">
+            {verified
+              ? "전화번호 인증이 완료되었습니다."
+              : "전화번호 인증이 필요합니다."}
+          </p>
 
           <label
             htmlFor="password"
