@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import sidemenubars from "/public/side-menubars.svg";
-import dkfriendlogo from "/public/dkfriend-logo.svg";
+import textlogo from "/public/logo/textlogo.svg";
 
 function Header() {
   return (
@@ -14,7 +14,7 @@ function Header() {
         style={{ width: 16, height: 12 }}
       />
       <Image
-        src={dkfriendlogo}
+        src={textlogo}
         width={114}
         height={41}
         alt="logo"
