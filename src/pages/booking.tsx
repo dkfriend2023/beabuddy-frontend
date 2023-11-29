@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import "react-calendar/dist/Calendar.css";
 import Calendar from "../components/Calendar";
@@ -157,7 +158,9 @@ function Booking() {
     <div className="h-screen bg-[#f6f6f6] overflow-x-hidden overflow-y-scroll flex justify-center">
       <div className="w-[375px]">
         <div className="flex flex-row justify-between px-[24px] py-[15.5px]">
-          <Image src={arrowleft} width={24} height={24} alt="icon" />
+          <Link href="/">
+            <Image src={arrowleft} width={24} height={24} alt="icon" />
+          </Link>
           <div className="text-[#FE8D00] text-[16px] font-semibold">
             예약하기
           </div>
