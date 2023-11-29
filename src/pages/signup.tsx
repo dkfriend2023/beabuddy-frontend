@@ -46,6 +46,8 @@ function Signup() {
               localStorage.setItem("access-token", accessToken);
             }
 
+            alert("회원가입이 완료되었습니다.");
+
             router.push("/");
           });
       } catch (error) {
@@ -57,6 +59,7 @@ function Signup() {
   }
 
   async function getVerification() {
+    alert("인증번호가 전송되었습니다.");
     try {
       await fetch(`${process.env.NEXT_PUBLIC_DB_HOST}accounts/sms/`, {
         method: "POST",
@@ -82,6 +85,9 @@ function Signup() {
   function verifyProcess() {
     if (verificationNum === Number(userVerificationNum)) {
       setVerified(true);
+      alert("전화번호 인증이 완료되었습니다.");
+    } else {
+      alert("인증번호가 일치하지 않습니다.");
     }
   }
 
