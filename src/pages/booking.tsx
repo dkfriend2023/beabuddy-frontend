@@ -305,11 +305,54 @@ function Booking() {
         </div>
         <div className="p-[15px]">
           <div className="text-[20px] font-semibold">유의사항 (재확인)</div>
-          <div className="text-[10px] font-regular p-[7px] pb-[0px]">
-            음 노쇼하지말고 음 뭐시기
-            뭐시기뭐시기뭐시기뭐시기뭐시기뭐시기뭐시기이이 돈 안돌려줄거구 웅웅
-            돈 안돌려줄거구 웅웅돈 안돌려줄거구 웅웅돈 안돌려줄거
-            난지금배고프구졸리구덥구에어컨틀고싶은데전기세는아까운뭐그런상태라고할
+          <div className="text-[12px] font-regular p-[8px] pb-[0px]">
+            <ul className="list-disc p-[8px]">
+              <li>
+                당일 예약 취소 시 사장님의 보증금 정책에 따라 보증금을 돌려받지
+                못할 수 있습니다.
+              </li>
+              <li>
+                노쇼를 할 경우 보증금을 돌려받지 못하며, 식당 및 다른 고객에게
+                피해를 줄 수 있습니다.
+              </li>
+              <li>
+                사전 연락 없이 기존 예약 인원의 절반 이하의 인원으로 방문하실
+                경우 보증금 환급에 제한이 있을 수 있습니다.
+              </li>
+              <li className="text-[13px]">
+                <strong>예약 최종 확정 여부는 문자로 알려드립니다.</strong>
+              </li>
+            </ul>
+            <br />
+            <div>
+              <p className="text-[14px] pb-[3px]">서비스 약관 동의</p>
+              <p className="text-[13px]">&lt;예약 관련 정책&gt;</p>
+              <ol className="list-decimal p-[8px]">
+                <li>예약 관련 정책은 식당 측 이용자의 정책을 따릅니다.</li>
+                <li>
+                  유의사항을 어기시는 경우 보증금 환급 및 향후 비어버디 서비스
+                  이용에 제약이 있을 수 있습니다.
+                </li>
+              </ol>
+              <p className="text-[13px]">&lt;개인정보 수집 및 제공 동의&gt;</p>
+              <ol className="list-decimal p-[8px]">
+                <li>수집항목: 이름, 전화번호, 모임명</li>
+                <li>
+                  수집 및 이용목적: 식당 측 이용자와 예약자의 원활한 거래 진행,
+                  민원 처리, 분쟁조정을 위한 기록 보존
+                </li>
+                <li>개인정보를 제공받는 자: 식당 측 이용자</li>
+                <li>
+                  개인정보를 제공받는 자의 이용목적: 식당 측 이용자와 예약자의
+                  원활한 거래 진행, 민원 처리, 분쟁조정을 위한 기록 보존
+                </li>
+                <li>보관기간: 회원 탈퇴 시 파기</li>
+                <li>
+                  동의 거부 시: 이용자는 개인정보의 수집 및 이용 동의를 거부할
+                  권리가 있으나, 이 경우 서비스 예약이 제한됩니다.
+                </li>
+              </ol>
+            </div>
           </div>
         </div>
         <div className="flex flex-row items-center justify-end p-[15px] pt-[0px]">
