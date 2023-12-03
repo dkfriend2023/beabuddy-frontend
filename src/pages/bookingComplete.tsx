@@ -119,7 +119,7 @@ function BookingCompletePage() {
           type="button"
           className="w-full h-[64px] bg-[#fe8d00] mt-[12px] rounded-full text-[#fff] font-semibold"
         >
-          <Link href={"/"}>계속 둘러보기</Link>
+          <Link href={"/home"}>계속 둘러보기</Link>
         </button>
       </div>
     </div>
