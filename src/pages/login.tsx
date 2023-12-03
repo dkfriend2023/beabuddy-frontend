@@ -37,7 +37,7 @@ function Login() {
               localStorage.setItem("access-token", accessToken);
             }
 
-            router.push("/");
+            router.push("/home");
           }
         });
     } catch (error) {
