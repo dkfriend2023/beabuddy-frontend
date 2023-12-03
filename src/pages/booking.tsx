@@ -61,24 +61,28 @@ function Booking() {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem("access-token");
-        const response = await fetch(`http://43.201.13.231/bookings/1/`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_DB_HOST}bookings/1/`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         if (response.ok) {
           const data = await response.json();
           console.log(data);
           setBookingData(data);
+          setIsLoading(false);
         } else {
           console.error("Failed to fetch data");
+          window.alert("Please log in first.");
+          router.push("/");
         }
       } catch (error) {
         console.error(error);
-      } finally {
-        setIsLoading(false);
       }
     };
     fetchData();
@@ -111,14 +115,17 @@ function Booking() {
 
       try {
         const token = localStorage.getItem("access-token");
-        const response = await fetch(`http://43.201.13.231/bookings/1/`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify(reservationData),
-        });
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_DB_HOST}bookings/1/`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(reservationData),
+          }
+        );
 
         if (response.ok) {
           console.log("Booked successfully");
@@ -132,6 +139,7 @@ function Booking() {
         } else {
           console.error("Failed to book");
           alert("로그인 후 이용해주세요.");
+          window.location.href = "/";
         }
       } catch (error) {
         console.error("Error during booking: ", error);
@@ -325,7 +333,9 @@ function Booking() {
             </ul>
             <br />
             <div>
-              <p className="text-[14px] pb-[3px]">서비스 약관 동의</p>
+              <p className="text-[14px] pb-[3px]">
+                <b>서비스 약관 동의</b>
+              </p>
               <p className="text-[13px]">&lt;예약 관련 정책&gt;</p>
               <ol className="list-decimal p-[8px]">
                 <li>예약 관련 정책은 식당 측 이용자의 정책을 따릅니다.</li>
