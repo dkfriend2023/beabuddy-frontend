@@ -83,7 +83,7 @@ function Signup() {
   }
 
   function verifyProcess() {
-    if (verificationNum === Number(userVerificationNum)) {
+    if (String(verificationNum) === userVerificationNum) {
       setVerified(true);
       alert("전화번호 인증이 완료되었습니다.");
     } else {
