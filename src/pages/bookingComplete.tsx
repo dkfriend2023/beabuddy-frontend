@@ -19,13 +19,16 @@ function BookingCompletePage() {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem("access-token");
-        const response = await fetch(`http://43.201.13.231/bookings/1/`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_DB_HOST}bookings/1/`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         if (response.ok) {
           const data = await response.json();
           console.log(data);
