@@ -21,14 +21,14 @@ function WelcomePage() {
           </div>
         </div>
         <div className="flex flex-col justify-start items-center gap-[8px]">
-          <Link
+          {/* <Link
             href={`${process.env.NEXT_PUBLIC_DB_HOST}accounts/kakao/signin/`}
           >
             <button className="bg-[#fee500] font-bold w-[256px] h-[49px] rounded-[12px] text-[#000000]/80 text-[14px] flex justify-center items-center gap-[10px]">
               <Image src={kakaologo} width={15} height={15} alt="logo" />
               카카오로 시작하기
             </button>
-          </Link>
+          </Link> */}
           <Link href="/signup">
             <button className="block bg-[#fe8d00] font-bold w-[256px] h-[49px] rounded-[12px] text-[#FFF] text-[14px]">
               회원가입
