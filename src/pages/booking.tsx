@@ -257,7 +257,7 @@ function Booking() {
         </div>
         <div className="p-[15px]">
           <div className="text-[20px] font-semibold mb-[10px]">예약자 정보</div>
-          <div className="bg-[#ffffff] rounded-[10px] shadow-[0_2px_8px_0_rgba(18,25,38,0.1)] h-[143px] p-[10px] flex flex-col">
+          <div className="bg-[#ffffff] rounded-[10px] shadow-[0_2px_8px_0_rgba(18,25,38,0.1)] h-[143px] p-[15px] flex flex-col">
             <div className="flex flex-row items-center justify-between pb-[5px]">
               <div className="text-[16px] font-semibold">
                 {bookingData.user.user_nickname}
