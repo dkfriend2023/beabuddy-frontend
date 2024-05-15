@@ -7,7 +7,6 @@ import Calendar from "../components/Calendar";
 import arrowleft from "public/detail-icons/arrow-left.svg";
 import call from "public/detail-icons/call.svg";
 import location from "public/detail-icons/location.svg";
-import pencil from "public/detail-icons/pencil.svg";
 import people from "public/detail-icons/people.svg";
 import document from "public/detail-icons/document.svg";
 import food from "public/detail-icons/food_image.png";
@@ -263,7 +262,6 @@ function Booking() {
               <div className="text-[16px] font-semibold">
                 {bookingData.user.user_nickname}
               </div>
-              <Image src={pencil} width={20} height={20} alt="icon" />
             </div>
             <div className="flex flex-row items-center pb-[3px]">
               <Image
