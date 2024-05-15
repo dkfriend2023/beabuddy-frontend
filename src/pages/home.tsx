@@ -48,9 +48,9 @@ function Page() {
       <div className="w-[375px]">
         <Header />
         <div className="flex justify-around items-center mx-[18px] mb-[28px]">
-          <Link href="#" onClick={callAPI}>
-            <SearchBar />
-          </Link>
+          {/* <Link href="#"> */}
+          <SearchBar />
+          {/* </Link> */}
         </div>
         <div className="mb-[36px] px-[18px] max-w-[370px] sm:max-w-[300px] mx-auto">
           <Swiper
@@ -112,11 +112,11 @@ function Page() {
             </Link>
           </div>
           <div className="mt-[16px] mb-[36px] px-[18px]">
-            <Swiper spaceBetween={20} slidesPerView={"auto"}>
+            <Swiper spaceBetween={0} slidesPerView={"auto"}>
               {groups.map((item, index) => (
                 <SwiperSlide
                   key={index}
-                  className="max-w-[200px] sm:max-w-[160px]"
+                  className="max-w-[190px] sm:max-w-[160px]"
                 >
                   <AreaCard
                     name={item.name}

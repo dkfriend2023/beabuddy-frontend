@@ -7,7 +7,6 @@ import Calendar from "../components/Calendar";
 import arrowleft from "public/detail-icons/arrow-left.svg";
 import call from "public/detail-icons/call.svg";
 import location from "public/detail-icons/location.svg";
-import pencil from "public/detail-icons/pencil.svg";
 import people from "public/detail-icons/people.svg";
 import document from "public/detail-icons/document.svg";
 import food from "public/detail-icons/food_image.png";
@@ -258,12 +257,11 @@ function Booking() {
         </div>
         <div className="p-[15px]">
           <div className="text-[20px] font-semibold mb-[10px]">예약자 정보</div>
-          <div className="bg-[#ffffff] rounded-[10px] shadow-[0_2px_8px_0_rgba(18,25,38,0.1)] h-[143px] p-[10px] flex flex-col">
+          <div className="bg-[#ffffff] rounded-[10px] shadow-[0_2px_8px_0_rgba(18,25,38,0.1)] h-[143px] p-[15px] flex flex-col">
             <div className="flex flex-row items-center justify-between pb-[5px]">
               <div className="text-[16px] font-semibold">
                 {bookingData.user.user_nickname}
               </div>
-              <Image src={pencil} width={20} height={20} alt="icon" />
             </div>
             <div className="flex flex-row items-center pb-[3px]">
               <Image
