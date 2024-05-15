@@ -112,11 +112,11 @@ function Page() {
             </Link>
           </div>
           <div className="mt-[16px] mb-[36px] px-[18px]">
-            <Swiper spaceBetween={20} slidesPerView={"auto"}>
+            <Swiper spaceBetween={0} slidesPerView={"auto"}>
               {groups.map((item, index) => (
                 <SwiperSlide
                   key={index}
-                  className="max-w-[200px] sm:max-w-[160px]"
+                  className="max-w-[190px] sm:max-w-[160px]"
                 >
                   <AreaCard
                     name={item.name}
