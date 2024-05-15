@@ -48,9 +48,9 @@ function Page() {
       <div className="w-[375px]">
         <Header />
         <div className="flex justify-around items-center mx-[18px] mb-[28px]">
-          <Link href="#" onClick={callAPI}>
-            <SearchBar />
-          </Link>
+          {/* <Link href="#"> */}
+          <SearchBar />
+          {/* </Link> */}
         </div>
         <div className="mb-[36px] px-[18px] max-w-[370px] sm:max-w-[300px] mx-auto">
           <Swiper
