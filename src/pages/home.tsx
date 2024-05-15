@@ -24,7 +24,7 @@ function Page() {
   const [groups, setGroup] = useState([]);
   const callAPI = async () => {
     try {
-      const res = await fetch(`http://127.0.0.1:8000`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_DB_HOST}`, {
         method: "GET",
         headers: {
           accept: "application/json",
